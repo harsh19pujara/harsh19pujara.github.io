@@ -1,53 +1,364 @@
-**Privacy Policy for Briko**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Briko</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0c0e12;
+      --surface: #13161c;
+      --border: #1e2230;
+      --accent: #5b6af5;
+      --accent-glow: rgba(91, 106, 245, 0.18);
+      --text: #e8eaf2;
+      --muted: #7a7f96;
+      --heading: #ffffff;
+    }
 
-Effective Date: 4 April 2026
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Thank you for playing *Briko*. This Privacy Policy explains how we handle your information.
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
 
-## 1. Information We Collect
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(91,106,245,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,106,245,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-We do not collect any personally identifiable information from users.
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
 
-However, the game may collect limited non-personal data such as:
+    /* Header */
+    header {
+      margin-bottom: 56px;
+      animation: fadeUp 0.6s ease both;
+    }
 
-* Device type and OS version
-* Gameplay progress (stored locally on your device)
+    .game-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(91,106,245,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
 
-## 2. How We Use Information
+    .game-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
 
-The collected information is used to:
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
 
-* Improve game performance
-* Save your progress locally
-* Fix bugs and enhance user experience
+    .effective-date {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 300;
+    }
 
-## 3. Third-Party Services
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 32px 0;
+      opacity: 0.4;
+    }
 
-If enabled, the game may use third-party services such as:
+    .intro {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 48px;
+    }
 
-* Google Play Services
-* Ad networks (e.g., AdMob)
+    /* Sections */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.5s ease both;
+    }
 
-These services may collect anonymized data according to their own privacy policies.
+    .section:hover {
+      border-color: rgba(91,106,245,0.3);
+      box-shadow: 0 0 32px rgba(91,106,245,0.06);
+    }
 
-## 4. Data Storage
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
 
-* All gameplay data is stored locally on your device
-* We do not store user data on external servers
+    .section-number {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(91,106,245,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
-## 5. Children’s Privacy
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: 0.01em;
+    }
 
-Briko does not knowingly collect personal information from children under 13.
+    p {
+      font-size: 15px;
+      color: #adb1c7;
+      margin-bottom: 12px;
+    }
 
-## 6. Security
+    p:last-child { margin-bottom: 0; }
 
-We take reasonable measures to protect your data. However, no method of transmission over the internet is 100% secure.
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
 
-## 7. Changes to This Policy
+    ul li {
+      font-size: 15px;
+      color: #adb1c7;
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
 
-We may update this Privacy Policy from time to time. Changes will be reflected on this page.
+    ul li:last-child { border-bottom: none; }
 
-## 8. Contact Us
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.7;
+    }
 
-If you have any questions, contact us at:
-harshpujara6121@gmail.com
+    /* Contact section special styling */
+    .contact-section {
+      background: linear-gradient(135deg, rgba(91,106,245,0.1), rgba(91,106,245,0.04));
+      border-color: rgba(91,106,245,0.25);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      margin-top: 8px;
+      padding: 10px 18px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(91,106,245,0.3);
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      background: rgba(91,106,245,0.25);
+      border-color: rgba(91,106,245,0.5);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    footer strong {
+      font-family: 'Syne', sans-serif;
+      color: var(--text);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.10s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.20s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.30s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+    .section:nth-child(8) { animation-delay: 0.40s; }
+
+    @media (max-width: 520px) {
+      .wrap { padding: 40px 16px 72px; }
+      .section { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="game-badge">Privacy Policy</div>
+      <h1>Briko</h1>
+      <p class="effective-date">Effective Date: April 4, 2026</p>
+      <div class="divider"></div>
+      <p class="intro">Thank you for playing Briko. This Privacy Policy explains how we handle your information when you use our game.</p>
+    </header>
+
+    <main>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Information We Collect</h2>
+        </div>
+        <p>We do not collect any personally identifiable information from users. However, the game may collect limited non-personal data such as:</p>
+        <ul>
+          <li>Device type and OS version</li>
+          <li>Gameplay progress (stored locally on your device)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>How We Use Information</h2>
+        </div>
+        <p>The collected information is used to:</p>
+        <ul>
+          <li>Improve game performance</li>
+          <li>Save your progress locally</li>
+          <li>Fix bugs and enhance user experience</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Third-Party Services</h2>
+        </div>
+        <p>If enabled, the game may use third-party services such as:</p>
+        <ul>
+          <li>Google Play Services</li>
+          <li>Ad networks (e.g., AdMob)</li>
+        </ul>
+        <p style="margin-top:12px;">These services may collect anonymized data according to their own privacy policies.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Data Storage</h2>
+        </div>
+        <ul>
+          <li>All gameplay data is stored locally on your device</li>
+          <li>We do not store user data on external servers</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Children's Privacy</h2>
+        </div>
+        <p>Briko does not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can take appropriate action.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Security</h2>
+        </div>
+        <p>We take reasonable measures to protect your data. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Changes to This Policy</h2>
+        </div>
+        <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated effective date. We encourage you to review this page periodically.</p>
+      </div>
+
+      <div class="section contact-section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Contact Us</h2>
+        </div>
+        <p>If you have any questions or concerns about this Privacy Policy, feel free to reach out:</p>
+        <a class="contact-link" href="mailto:harshpujara6121@gmail.com">
+          ✉ harshpujara6121@gmail.com
+        </a>
+      </div>
+
+    </main>
+
+    <footer>
+      <p>&copy; 2026 <strong>Briko</strong>. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
